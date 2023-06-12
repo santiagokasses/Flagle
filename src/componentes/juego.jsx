@@ -19,7 +19,13 @@ console.log("Hago consulta - axios");
 
 const juego = (props) => {
     return(
-        <h1>Jueguito de Banderas</h1>
-        
+        <div>
+            <h1>Jueguito de Banderas</h1>
+            <h3>Puntos: ${puntos}</h3>
+            <img></img>
+            <input type="text" name="pais" className="u-full-width" placeholder="Pais"/>
+        </div>
     )
 }
+
+export default Juego
