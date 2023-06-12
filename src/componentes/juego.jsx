@@ -17,31 +17,41 @@ const juego = (props) => {
     let respueta = "Argentina";
     let cantIntentos = 2;
 
-    if(respueta == bandera && cantIntentos == 1){
-        puntos = puntos + variable;
-    }
-    else if(respueta == bandera && cantIntentos == 2){
-        puntos = puntos + variableDos;
-    }
-    else if(respueta == bandera && cantIntentos == 3){
-        puntos = puntos + variableTres;
-    }
-    else{
-        juegoTerminado = true;
-    }
+
+    const [Bandera, setBanderda] = useState('')
+
+    console.log("Hago consulta - fetch")
+    fetch("https://countriesnow.space/api/v0.1/countries/flag/images")
+        .then(res => res.json())
+        .then(res => {
+            Bandera = res.data[1]
+            console.log(res.data[1])
+        })
+        .catch(err => console.error("error", err))
+    console.log("Fin consulta - fetch")
+    // if (respueta == bandera && cantIntentos == 1) {
+    //     puntos = puntos + variable;
+    // }
+    // else if (respueta == bandera && cantIntentos == 2) {
+    //     puntos = puntos + variableDos;
+    // }
+    // else if (respueta == bandera && cantIntentos == 3) {
+    //     puntos = puntos + variableTres;
+    // }
+    // else {
+    //     juegoTerminado = true;
+    // }
     if(ayudaUsada){
         puntos = puntos - puntosDeAyuda;
     }
 
-    return(
+    return (
         <div>
             <h1>Jueguito de Banderas</h1>
-            <h3>Vidas: {vidas}</h3>
-            <img href = {bandera}/>
+            <img href="${bandera}"/>
             <input type="text" name="pais" className="u-full-width" placeholder="Pais"/>
-            <button type="" >Ayuda {cantAyudas}</button>
             <button type="submit" className="u-full-width button-primary">Submit</button>
-            <h3>Puntos: {puntos}</h3>
+            <h3>Puntos: ${puntos}</h3>
         </div>
     )
 }
