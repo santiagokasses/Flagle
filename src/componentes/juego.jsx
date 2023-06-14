@@ -8,6 +8,7 @@ const Juego = (props) => {
     }])
     const [Abandera, setABandera] = useState(0)
     const [puntos, setPuntos] = useState(0)
+    const [timer, setTimer] = useState(0)
 
     useEffect(() => {
         const obtenerAbanderas = () => {
@@ -25,7 +26,6 @@ const Juego = (props) => {
     }, [])
     useEffect(()=>{
         setABandera(Math.floor(Math.random() * Bandera.length))
-        console.log(Abandera)
     }, [Bandera])
 
     const handleSubmit = (e) => {
@@ -44,6 +44,7 @@ const Juego = (props) => {
             console.log(document.getElementsByName("pais")[0].value)
         }
     }
+    
     return (
         <>
             <h1>Jueguito de Banderas</h1>
