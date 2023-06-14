@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Juego from './componentes/juego'
+import Juego from './componentes/Juego'
 
 function App() {
   return (
