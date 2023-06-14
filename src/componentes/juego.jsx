@@ -9,19 +9,6 @@ const Juego = (props) => {
     const [Abandera, setABandera] = useState(0)
     const [puntos, setPuntos] = useState(0)
 
-    // const variable = 20;
-    // const variableDos = 15;
-    // const variableTres = 10;
-    // let cantAyudas = 3;
-    // const puntosDeAyuda = 5;
-    // let vidas = 3;
-    // let juegoTerminado = false;
-    // let ayudaUsada = false;
-
-    // //eliminar
-    // let respueta = "Argentina";
-    // let cantIntentos = 2;
-
     useEffect(() => {
         const obtenerAbanderas = () => {
             fetch("https://countriesnow.space/api/v0.1/countries/flag/images")
@@ -57,21 +44,6 @@ const Juego = (props) => {
             console.log(document.getElementsByName("pais")[0].value)
         }
     }
-    // if (respueta == bandera && cantIntentos == 1) {
-    //     puntos = puntos + variable;
-    // }
-    // else if (respueta == bandera && cantIntentos == 2) {
-    //     puntos = puntos + variableDos;
-    // }
-    // else if (respueta == bandera && cantIntentos == 3) {
-    //     puntos = puntos + variableTres;
-    // }
-    // else {
-    //     juegoTerminado = true;
-    // }
-    // if (ayudaUsada) {
-    //     puntos = puntos - puntosDeAyuda;
-    // }
     return (
         <>
             <h1>Jueguito de Banderas</h1>
