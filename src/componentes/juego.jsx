@@ -9,23 +9,6 @@ const Juego = (props) => {
     const [Abandera, setABandera] = useState(0)
     const [puntos, setPuntos] = useState(0)
     const [timer, setTimer] = useState(0)
-
-    useEffect(() => {
-        const obtenerAbanderas = async () => {
-            fetch("https://countriesnow.space/api/v0.1/countries/flag/images")
-                .then(res => res.json())
-                .then(res => {
-                    const updatedBandera = res.data.map(e => ({
-                        bandera: e.flag,
-                        nombre: e.name.toUpperCase()
-                    }))
-                    setBandera(updatedBandera)
-                    console.log(Bandera[0].bandera)
-                })
-        }
-        obtenerAbanderas()
-        setABandera(Math.floor(Math.random() * Bandera.length))
-    }, [])
     useEffect(() => {
         const obtenerAbanderas = async () => {
           try {
