@@ -1,4 +1,4 @@
-import './Juego.css'
+import './juego.css'
 import React, { Fragment, useState, useEffect } from "react"
 
 const Juego = (props) => {
@@ -11,7 +11,7 @@ const Juego = (props) => {
     const [timer, setTimer] = useState(0)
 
     useEffect(() => {
-        const obtenerAbanderas = () => {
+        const obtenerAbanderas = async () => {
             fetch("https://countriesnow.space/api/v0.1/countries/flag/images")
                 .then(res => res.json())
                 .then(res => {
@@ -20,13 +20,29 @@ const Juego = (props) => {
                         nombre: e.name.toUpperCase()
                     }))
                     setBandera(updatedBandera)
+                    console.log(Bandera[0].bandera)
                 })
         }
         obtenerAbanderas()
-    }, [])
-    useEffect(()=>{
         setABandera(Math.floor(Math.random() * Bandera.length))
-    }, [Bandera])
+    }, [])
+    useEffect(() => {
+        const obtenerAbanderas = async () => {
+          try {
+            const res = await fetch("https://countriesnow.space/api/v0.1/countries/flag/images")
+            const data = await res.json()
+            const updatedBandera = data.data.map(e => ({
+              bandera: e.flag,
+              nombre: e.name.toUpperCase()
+            }))
+            setBandera(updatedBandera)
+            setABandera(Math.floor(Math.random() * updatedBandera.length))
+          } catch (error) {
+            console.error(error)
+          }
+        }
+        obtenerAbanderas()
+      }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault()

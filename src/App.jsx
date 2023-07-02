@@ -1,5 +1,5 @@
 import './App.css';
-import Juego from './componentes/Juego.jsx'
+import Juego from './componentes/juego.jsx'
 
 function App() {
   return (
