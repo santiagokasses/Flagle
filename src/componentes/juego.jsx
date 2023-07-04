@@ -1,5 +1,6 @@
 import './juego.css'
 import React, { Fragment, useState, useEffect } from "react"
+import { Button } from 'react-bootstrap'
 
 const Juego = (props) => {
     const [Bandera, setBandera] = useState([{
@@ -27,7 +28,7 @@ const Juego = (props) => {
         obtenerAbanderas()
       }, [])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e) => { 
         e.preventDefault()
         if (Bandera[BanderaActual].nombre === document.getElementsByName("pais")[0].value.toUpperCase()) {
             document.getElementsByName("pais")[0].value = ''
@@ -39,12 +40,17 @@ const Juego = (props) => {
             setPuntos(puntos - 1)
         }
     }
+    const handleClick = (e) =>{
+        e.preventDefault()
+        setBanderaActual(Math.floor(Math.random() * Bandera.length))
+    }
     
     return (
         <>
             <h1>Jueguito de Banderas</h1>
             <h2>¿De que pais es esta bandera?</h2>
             <div className="banderita" ></div>
+            <Button onClick={handleClick}>Cambiar Bandera</Button>
             <form onSubmit={handleSubmit}>
                 <div><img alt='' src={Bandera[BanderaActual].bandera}/></div>
                 <input type="text" name="pais" className="u-full-width" /*placeholder={Bandera[BanderaActual].nombre}*/ />
